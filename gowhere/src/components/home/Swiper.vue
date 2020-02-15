@@ -1,7 +1,10 @@
 <template>
     <div class="swiper-container">
-        <swiper :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
-            <swiper-slide>
+        <swiper :options="swiperOption" ref="mySwiper" v-if="showSwiper">
+          <swiper-slide v-for="item of list" :key="item.id" >
+            <img :src="item.imgUrl" alt="" class="swiper-img">
+          </swiper-slide>
+            <!-- <swiper-slide>
                 <img class="swiper-img" src="https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/0B/00/ChMkJ1wcloSITAcKAAMLsFkEUtAAAt6LAPvhBMAAwvI448.jpg" alt="">
             </swiper-slide>
             <swiper-slide>
@@ -9,7 +12,7 @@
             </swiper-slide>
             <swiper-slide>
                 <img class="swiper-img" src="https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/0B/00/ChMkJ1wcloSIUYAuAAO3jLTBc34AAt6LAPy1R4AA7ek000.jpg" alt="">
-            </swiper-slide>
+            </swiper-slide> -->
             <div class="swiper-pagination"  slot="pagination"></div>
             <!-- <div class="swiper-pagination"  slot="pagination"></div> -->
             <!-- <div class="swiper-button-prev" slot="button-prev"></div> -->
@@ -23,9 +26,14 @@
 <script>
   export default {
     name: 'HomeSwiper',
+    props:{
+      list: Array
+    },
     data() {
       return {
         swiperOption: {
+          loop:true,
+          autoplay:true
           // some swiper options/callbacks
           // 所有的参数同 swiper 官方 api 参数
           // ...
@@ -33,14 +41,13 @@
       }
     },
     computed: {
-      swiper() {
-        return this.$refs.mySwiper.swiper
+
+      showSwiper(){
+        return this.list.length
       }
     },
     mounted() {
-      // current swiper instance
-      // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-      this.swiper.slideTo(0, 1000, false)
+
     }
   }
 </script>
@@ -49,7 +56,7 @@
     overflow hidden
     width 100%
     height 0
-    padding-bottom 61%
+    padding-bottom 31%
     background #eee    
     .swiper-img
         width 100%

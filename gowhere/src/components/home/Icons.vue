@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-        <swiper :options="swiperOption" ref="iconSwiper" @someSwiperEvent="callback">
+        <swiper :options="swiperOption" ref="iconSwiper">
             <swiper-slide v-for="(page, index) of pages" :key="index">
                 <div class="icon"
                      v-for="item of page"
@@ -20,6 +20,9 @@
 
 export default {
     name:'HomeIcons',
+    props:{
+        list: Array
+    },
     data() {
       return {
           iconList:[
@@ -81,9 +84,6 @@ export default {
       }
     },    
     computed: {
-      swiper() {
-        return this.$refs.iconSwiper.swiper
-      },
       pages(){
           const pages=[]
           this.iconList.forEach((item,index) => {
@@ -96,11 +96,7 @@ export default {
           return pages
       }
     },
-    mounted() {
-      // current swiper instance
-      // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-      this.swiper.slideTo(0, 1000, false)
-    }
+
 }
 </script>
 

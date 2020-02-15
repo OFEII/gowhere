@@ -7,14 +7,22 @@
             输入城市/景点/
             <span class="iconfont">&#xe60c;</span>
         </div>
-        <div class="header-right">城市
-            <span class="iconfont">&#xe61c;</span>
-        </div>
+        <router-link to='/city'>
+            <div class="header-right">
+                {{this.city}}
+                <span class="iconfont">&#xe61c;</span>
+            </div>
+
+        </router-link>
+        
     </div>
 </template>
 <script>
 export default {
     name:'HomeHeader',
+    props:{
+        city:String
+    }
 
 }
 </script>
@@ -42,7 +50,8 @@ export default {
         border-radius 8px
       .header-right
         width 1.24rem
-        float: right     
+        float right
+        color #fff     
 
 
 </style>
