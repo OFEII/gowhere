@@ -107,7 +107,7 @@ export default {
                 border-radius .06rem
                 line-height .44rem
                 margin-top .16rem
-                margin-left -3rem
+                margin-left -4rem
                 color #fff
                 font-weight bold
                 font-size .28rem

@@ -1,32 +1,41 @@
 <template>
     <div>
         <div class="banner" @click="handleBannerClick">
-            <img class="banner-img" src="https://desk-fd.zol-img.com.cn/t_s960x600c5/g5/M00/0B/00/ChMkJ1wcloSITAcKAAMLsFkEUtAAAt6LAPvhBMAAwvI448.jpg" alt="">
+            <img class="banner-img" :src="bannerImg" alt="">
             <div class="banner-info">
                 <div class="banner-title">
-                    大连圣亚海洋世界（AAAA景区）
+                    {{this.sightName}}
                 </div>
                 <div class="banner-number">
                     <span class="iconfont banner-icon">&#xe62a;</span>
-                    39
+                    {{this.gallaryImgs.length}}
                 </div>
             </div>
         </div>
-        <common-gallary
-            :imgs='imgs'
-            v-show="showGallary"
-            @close="handleGallaryClose"
-        />      
+        <fade-animation>
+            <common-gallary
+                :imgs='gallaryImgs'
+                v-show="showGallary"
+                @close="handleGallaryClose"
+            />      
+        </fade-animation>
     </div>
 
 </template>
 
 <script>
 import CommonGallary from '../common/gallary/gallary'
+import FadeAnimation from '../common/fade/fade'
 export default {
     name:'DetailBanner',
+    props:{
+        sightName: String,
+        bannerImg: String,
+        gallaryImgs: Array,
+    },
     components:{
-        CommonGallary
+        CommonGallary,
+        FadeAnimation
     },
     data() {
         return {

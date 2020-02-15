@@ -24,7 +24,11 @@ export default {
     },
     activated() {
         window.addEventListener('scroll',this.handleScroll)
+        //全局事件解绑
     }, 
+    deactivated() {
+        window.removeEventListener('scroll',this.handleScroll)
+    },
     methods: {
         handleScroll(){
             const top = document.documentElement.scrollTop
@@ -59,11 +63,11 @@ export default {
             font-size .4rem
             margin-top .2rem
     .header-fixed
+        z-index 2
         position fixed
         top 0
         left 0
         right 0
-        
         overflow hidden
         height 0.86rem
         line-height 0.86rem
