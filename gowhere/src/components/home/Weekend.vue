@@ -62,10 +62,11 @@ export default {
                 font-size: .32rem
                 white-space nowrap
                 text-overflow ellipsis
-                text-align left
+                text-align center
+                font-weight bold
             .item-desc
                 line-height: .4rem
-                color: #000          
+                color: #333       
 
                    
 </style>

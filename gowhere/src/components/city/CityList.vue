@@ -5,7 +5,7 @@
                 <div class="title border-bottom">当前城市</div>
                 <div class="btn-list">
                     <div class="btn-wrapper">
-                        <div class="btn">广东</div>
+                        <div class="btn">{{this.currentCity}}</div>
                     </div>                
                 </div>
             </div>
@@ -16,6 +16,8 @@
                         class="btn-wrapper" 
                         v-for="item of hot" 
                         :key="item.id"
+                        @click="handleCityClick(item.name)"
+                        onClick="javascript:;"
                     >
                         <div class="btn">{{item.name}}</div>
                     </div>
@@ -32,7 +34,11 @@
                 <div class="item-list">
                     <div class="item border-bottom"
                         v-for="innerItem of item"
-                        :key="innerItem.id">{{innerItem.name}}</div>
+                        :key="innerItem.id"
+                        @click="handleCityClick(innerItem.name)"
+                    >
+                        {{innerItem.name}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,6 +47,7 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
     name:'CityList',
@@ -49,16 +56,29 @@ export default {
         hot: Array,
         letter: String,
     },
+    computed: {
+        ...mapState({
+            currentCity: 'city'
+        })
+    },
+    methods: {
+        handleCityClick(city){
+            // this.$store.dispatch('changeCity', city)
+            this.changeCity(city)
+            this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
+    },
     mounted(){
-        this.scroll = new Bscroll(this.$refs.wrapper)
+        this.scroll = new Bscroll(this.$refs.wrapper, { mouseWheel: true, click: true, tap: true })
     },
     watch: {
         letter(){
             // console.log(this.letter)
             if(this.letter){
                 const element = this.$refs[this.letter][0]
-                console.log(element)
-                this.scroll.scrollToElement(element)
+                // console.log(element)
+                this.scroll.scrollToElement(element, { mouseWheel: true, click: true, tap: true })
             }
         }
     },

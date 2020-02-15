@@ -44,7 +44,7 @@ export default {
         },
         handleGetCityInfoSucc(res){
             // console.log(res)
-            console.log(res.data.data)
+            // console.log(res.data.data)
             this.cities = res.data.data.cities
             this.hotCities = res.data.data.hotCities
         },
