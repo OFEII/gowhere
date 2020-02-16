@@ -58,7 +58,7 @@ module.exports = {
                 target: "http://yapi.demo.qunar.com/mock/81056/api",
                 changeOrigin: true,	//是否跨域
                 pathRewrite:{
-                    "^/api":"" //用'/api' 代替 target
+                    "^/api":"http://yapi.demo.qunar.com/mock/81056/api"//用'/api' 代替 target
                 }
             }
         }
