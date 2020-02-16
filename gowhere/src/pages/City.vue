@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         getCityInfo(){
-            axios.get('http://yapi.demo.qunar.com/mock/81056/api/city')
+            axios.get('/api/city')
             .then(this.handleGetCityInfoSucc)
         },
         handleGetCityInfoSucc(res){
