@@ -39,7 +39,7 @@ export default {
     },
     methods: {
         getHomeInfo (){
-            axios.get('http://yapi.demo.qunar.com/mock/81056/api/index')
+            axios.get('/api/index')
             .then(this.getHomeInfoSucc)
         },
         getHomeInfoSucc(res){

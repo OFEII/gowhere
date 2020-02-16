@@ -52,13 +52,12 @@ module.exports = {
     pluginOptions: {
       // ...
     },
-    devServer:{
-        proxyTable:{
-            "/api":{
-                target: "http://yapi.demo.qunar.com/mock/81056/api",
-                changeOrigin: true,	//是否跨域
-
-            }
-        }
-    }
+    devServer: {
+        proxy: {
+            '/api': {
+              target: 'http://yapi.demo.qunar.com/mock/81056/api',
+              ws: true,
+              changeOrigin: true
+            },}
+    },
   };
