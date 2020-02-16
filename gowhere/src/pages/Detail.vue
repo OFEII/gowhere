@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         getDetailInfo(){
-            axios.get('/api/detail',{
+            axios.get('http://yapi.demo.qunar.com/mock/81056/api/detail',{
                 params:{
                     id: this.$route.params.id
                 }

@@ -52,15 +52,15 @@ module.exports = {
     pluginOptions: {
       // ...
     },
-    devServer:{
-        proxyTable:{
-            "/api":{
-                target: "http://yapi.demo.qunar.com/mock/81056/api",
-                changeOrigin: true,	//是否跨域
-                pathRewrite:{
-                    "^/api":"http://yapi.demo.qunar.com/mock/81056/api"//用'/api' 代替 target
-                }
-            }
-        }
-    }
+    // devServer:{
+    //     proxyTable:{
+    //         "/api":{
+    //             target: "http://yapi.demo.qunar.com/mock/81056/api",
+    //             changeOrigin: true,	//是否跨域
+    //             pathRewrite:{
+    //                 "^/api":"http://yapi.demo.qunar.com/mock/81056/api"//用'/api' 代替 target
+    //             }
+    //         }
+    //     }
+    // }
   };
